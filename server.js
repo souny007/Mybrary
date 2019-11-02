@@ -31,9 +31,11 @@ app.use(express.static('public'));
 //setting router
 const indexRouter = require('./routes/index');// ເອີ້ນໃຊ້ routes page
 const authorRouter = require('./routes/authors');// ເອີ້ນໃຊ້ routes page
+const bookRouter = require('./routes/books')
 // set url
 app.use('/', indexRouter);
 app.use('/authors', authorRouter);
+app.use('/books', bookRouter)
 
 app.listen(process.env.PORT || 3000);
 
