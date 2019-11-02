@@ -5,7 +5,11 @@ if(process.env.NODE_ENV !== 'production'){
 const express = require('express');
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
-const indexRouter = require('./routes/index');// ເອີ້ນໃຊ້ routes page
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({limit: '10mb', extended: false}))
+
+
 
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DATABASE_URL,{
@@ -24,8 +28,16 @@ app.set('layout', 'layouts/layout');
 app.use(expressLayouts);
 app.use(express.static('public'));
 
+//setting router
+const indexRouter = require('./routes/index');// ເອີ້ນໃຊ້ routes page
+const authorRouter = require('./routes/authors');// ເອີ້ນໃຊ້ routes page
 // set url
 app.use('/', indexRouter);
-
+app.use('/authors', authorRouter);
 
 app.listen(process.env.PORT || 3000);
+
+
+
+
+
