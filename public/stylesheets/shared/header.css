@@ -10,6 +10,7 @@
   font-size: var(--nav-title-font-size);
   font-weight: var(--nav-title-font-weight);
 }
+
 .header-nav {
   display: flex;
   flex-wrap: wrap;
